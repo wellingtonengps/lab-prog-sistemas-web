@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        form {
+            text-align: center;
+        }
+        input {
+            height: 40px;
+            width: 300px;
+            margin-bottom: 10px;
+        }
+        button {
+            width: 150px;
+            height: 40px;
+            margin-top: 30px;
+        }
+    </style>
+    <script>
+        function validarCodigo(event) {
+            const codigo = document.getElementById('codigo').value;
+            const codigoCorreto = document.getElementById('formulario').dataset.codigo;
+
+            if (codigo !== codigoCorreto) {
+                event.preventDefault();
+                alert('Código incorreto! Por favor, tente novamente.');
+            }
+        }
+    </script>
+</head>
+<body>
+<div>
+    <h1>Formulário de Nome</h1>
+    <p th:text="'Digite o código: '+${senha}"></p>
+    <form id="formulario" th:action="@{/menu}" method="get" onsubmit="validarCodigo(event)" th:data-codigo="${senha}">
+        <input type="text" id="nome" name="nome" placeholder="Nome" required/><br/>
+        <input type="text" id="codigo" name="codigo" placeholder="Código"/><br/>
+        <button class="btn_enviar" type="submit">Enviar</button>
+    </form>
+</div>
+</body>
+</html>
