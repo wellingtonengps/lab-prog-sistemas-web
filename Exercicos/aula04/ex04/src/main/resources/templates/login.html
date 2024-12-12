@@ -3,30 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-        form {
-            text-align: center;
-        }
-        input {
-            height: 40px;
-            width: 300px;
-            margin-bottom: 10px;
-        }
-        button {
-            width: 150px;
-            height: 40px;
-            margin-top: 30px;
-        }
-    </style>
+    <title>Login</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script>
         function validarCodigo(event) {
             const codigo = document.getElementById('codigo').value;
@@ -39,15 +18,21 @@
         }
     </script>
 </head>
-<body>
-<div>
-    <h1>Formulário de Nome</h1>
-    <p th:text="'Digite o código: '+${senha}"></p>
+<body class="d-flex justify-content-center align-items-center vh-100 bg-light">
+<div class="card p-4 shadow" style="width: 400px;">
+    <h1 class="text-center mb-3">Formulário de Nome</h1>
+    <p class="text-center" th:text="'Digite o código: '+${senha}"></p>
     <form id="formulario" th:action="@{/menu}" method="get" onsubmit="validarCodigo(event)" th:data-codigo="${senha}">
-        <input type="text" id="nome" name="nome" placeholder="Nome" required/><br/>
-        <input type="text" id="codigo" name="codigo" placeholder="Código"/><br/>
-        <button class="btn_enviar" type="submit">Enviar</button>
+        <div class="mb-3">
+            <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome" required />
+        </div>
+        <div class="mb-3">
+            <input type="text" id="codigo" name="codigo" class="form-control" placeholder="Código" />
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Enviar</button>
     </form>
 </div>
+<!-- Bootstrap JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
